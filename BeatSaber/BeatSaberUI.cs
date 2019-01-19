@@ -367,11 +367,6 @@ namespace CustomUI.BeatSaber
             ToggleVisualActivator tva = btn.gameObject.AddComponent<ToggleVisualActivator>();
 
             btn.onClick.AddListener(delegate () {
-                //if (tva.IsOn)
-                //    tva.DisableToggle(ntb);
-                //else
-                //    tva.EnableToggle(ntb);
-                //tva.IsOn = !tva.IsOn;
                 tva.SetToggleState(!tva.IsOn, btn);
             });
 
@@ -400,11 +395,6 @@ namespace CustomUI.BeatSaber
             tgl.isOn = false;
 
             btn.onClick.AddListener(delegate () {
-                //if (tva.IsOn)
-                //    tva.DisableToggle(ntb);
-                //else
-                //    tva.EnableToggle(ntb);
-                //tva.IsOn = !tva.IsOn;
                 tva.SetToggleState(!tva.IsOn, btn);
             });
 
@@ -432,11 +422,6 @@ namespace CustomUI.BeatSaber
             tgl.isOn = false;
 
             btn.onClick.AddListener(delegate () {
-                //if (tva.IsOn)
-                //    tva.DisableToggle(ntb);
-                //else
-                //    tva.EnableToggle(ntb);
-                //tva.IsOn = !tva.IsOn;
                 tva.SetToggleState(!tva.IsOn, btn);
             });
 
