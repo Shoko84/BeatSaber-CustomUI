@@ -123,6 +123,30 @@ namespace CustomUI.BeatSaber
             ColorPicker colorPicker = BeatSaberUI.CreateColorPicker(parent.rectTransform, anchoredPosition, sizeDelta);
             return colorPicker;
         }
+
+        public static Button CreateUIToggleButton(this VRUIViewController parent, string buttonTemplate)
+        {
+            Button btn = BeatSaberUI.CreateUIToggleButton(parent.rectTransform, buttonTemplate);
+            return btn;
+        }
+
+        public static Button CreateUIToggleButton(this VRUIViewController parent, string buttonTemplate, Vector2 anchoredPosition, Vector2 sizeDelta, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = BeatSaberUI.CreateUIToggleButton(parent.rectTransform, buttonTemplate, anchoredPosition, sizeDelta, onClick, buttonText, icon);
+            return btn;
+        }
+
+        public static Button CreateUIToggleButton(this VRUIViewController parent, string buttonTemplate, Vector2 anchoredPosition, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = BeatSaberUI.CreateUIToggleButton(parent.rectTransform, buttonTemplate, anchoredPosition, onClick, buttonText, icon);
+            return btn;
+        }
+
+        public static Button CreateUIToggleButton(this VRUIViewController parent, string buttonTemplate, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = BeatSaberUI.CreateUIToggleButton(parent.rectTransform, buttonTemplate, onClick, buttonText, icon);
+            return btn;
+        }
         #endregion
     }
 }

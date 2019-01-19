@@ -1,6 +1,7 @@
 ﻿using BeatSaberCustomUI.UIElements;
 using CustomUI.Utilities;
 using System;
+using System.Collections;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -343,6 +344,103 @@ namespace CustomUI.BeatSaber
             (colorPicker.transform as RectTransform).anchoredPosition = anchoredPosition;
 
             return colorPicker;
+        }
+
+        public static Button CreateUIToggleButton(RectTransform parent, string buttonTemplate, Vector2 anchoredPosition, Vector2 sizeDelta, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = Instantiate(Resources.FindObjectsOfTypeAll<Button>().Last(x => (x.name == buttonTemplate)), parent, false);
+            btn.onClick = new Button.ButtonClickedEvent();
+            if (onClick != null)
+                btn.onClick.AddListener(onClick);
+            btn.name = "CustomUIToggleButton";
+
+            (btn.transform as RectTransform).anchorMin = new Vector2(0.5f, 0.5f);
+            (btn.transform as RectTransform).anchorMax = new Vector2(0.5f, 0.5f);
+            (btn.transform as RectTransform).anchoredPosition = anchoredPosition;
+            (btn.transform as RectTransform).sizeDelta = sizeDelta;
+
+            btn.SetButtonText(buttonText);
+            if (icon != null)
+                btn.SetButtonIcon(icon);
+
+            HMUI.NoTransitionsButton ntb = btn.GetComponent<HMUI.NoTransitionsButton>();
+            ToggleVisualActivator tva = btn.gameObject.AddComponent<ToggleVisualActivator>();
+
+            btn.onClick.AddListener(delegate () {
+                //if (tva.IsOn)
+                //    tva.DisableToggle(ntb);
+                //else
+                //    tva.EnableToggle(ntb);
+                //tva.IsOn = !tva.IsOn;
+                tva.SetToggleState(!tva.IsOn, btn);
+            });
+
+            return btn;
+        }
+
+        public static Button CreateUIToggleButton(RectTransform parent, string buttonTemplate, Vector2 anchoredPosition, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = Instantiate(Resources.FindObjectsOfTypeAll<Button>().Last(x => (x.name == buttonTemplate)), parent, false);
+            btn.onClick = new Button.ButtonClickedEvent();
+            if (onClick != null)
+                btn.onClick.AddListener(onClick);
+            btn.name = "CustomUIToggleButton";
+
+            (btn.transform as RectTransform).anchorMin = new Vector2(0.5f, 0.5f);
+            (btn.transform as RectTransform).anchorMax = new Vector2(0.5f, 0.5f);
+            (btn.transform as RectTransform).anchoredPosition = anchoredPosition;
+
+            btn.SetButtonText(buttonText);
+            if (icon != null)
+                btn.SetButtonIcon(icon);
+
+            HMUI.NoTransitionsButton ntb = btn.GetComponent<HMUI.NoTransitionsButton>();
+            ToggleVisualActivator tva = btn.gameObject.AddComponent<ToggleVisualActivator>();
+            Toggle tgl = btn.gameObject.AddComponent<Toggle>();
+            tgl.isOn = false;
+
+            btn.onClick.AddListener(delegate () {
+                //if (tva.IsOn)
+                //    tva.DisableToggle(ntb);
+                //else
+                //    tva.EnableToggle(ntb);
+                //tva.IsOn = !tva.IsOn;
+                tva.SetToggleState(!tva.IsOn, btn);
+            });
+
+            return btn;
+        }
+
+        public static Button CreateUIToggleButton(RectTransform parent, string buttonTemplate, UnityAction onClick = null, string buttonText = "BUTTON", Sprite icon = null)
+        {
+            Button btn = Instantiate(Resources.FindObjectsOfTypeAll<Button>().Last(x => (x.name == buttonTemplate)), parent, false);
+            btn.onClick = new Button.ButtonClickedEvent();
+            if (onClick != null)
+                btn.onClick.AddListener(onClick);
+            btn.name = "CustomUIToggleButton";
+
+            (btn.transform as RectTransform).anchorMin = new Vector2(0.5f, 0.5f);
+            (btn.transform as RectTransform).anchorMax = new Vector2(0.5f, 0.5f);
+
+            btn.SetButtonText(buttonText);
+            if (icon != null)
+                btn.SetButtonIcon(icon);
+
+            HMUI.NoTransitionsButton ntb = btn.GetComponent<HMUI.NoTransitionsButton>();
+            ToggleVisualActivator tva = btn.gameObject.AddComponent<ToggleVisualActivator>();
+            Toggle tgl = btn.gameObject.AddComponent<Toggle>();
+            tgl.isOn = false;
+
+            btn.onClick.AddListener(delegate () {
+                //if (tva.IsOn)
+                //    tva.DisableToggle(ntb);
+                //else
+                //    tva.EnableToggle(ntb);
+                //tva.IsOn = !tva.IsOn;
+                tva.SetToggleState(!tva.IsOn, btn);
+            });
+
+            return btn;
         }
     }
 }
